@@ -1,0 +1,55 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment and local credential files
+.env
+.env.*
+!.env.example
+
+# IDE-local settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~$*
+
+# Power BI local settings, caches, and locks
+**/.pbi/
+*.abf
+*.lock
+*.lck
+
+# Keep final Power BI and presentation deliverables tracked
+!PowerBI/*.pbix
+!PowerBI/*.pbip
+!PowerBI/**/*.tmdl
+!PowerBI/**/*.json
+!PowerBI/**/*.pbir
+!PowerBI/**/*.pbism
+!Presentation/*.pptx
+!Presentation/*.pdf
+
+Archive
+AGENTS.md

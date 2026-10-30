@@ -1,0 +1,301 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "abcdef0123456789abcd",
+  "position": {
+    "x": 970,
+    "y": 270,
+    "z": 7000,
+    "height": 335,
+    "width": 910,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Display Segment"
+                }
+              },
+              "queryRef": "Customers.Display Segment",
+              "nativeQueryRef": "Display Segment",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Customers Count"
+                }
+              },
+              "queryRef": "Customers.Customers Count",
+              "nativeQueryRef": "Customers Count"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Average Current Spend"
+                }
+              },
+              "queryRef": "Customers.Average Current Spend",
+              "nativeQueryRef": "Average Current Spend"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Average Frequency Score"
+                }
+              },
+              "queryRef": "Customers.Average Frequency Score",
+              "nativeQueryRef": "Average Frequency Score"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Average Satisfaction"
+                }
+              },
+              "queryRef": "Customers.Average Satisfaction",
+              "nativeQueryRef": "Average Satisfaction"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Customer Share %"
+                }
+              },
+              "queryRef": "Customers.Customer Share %",
+              "nativeQueryRef": "Customer Share %"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Promo Exposure %"
+                }
+              },
+              "queryRef": "Customers.Promo Exposure %",
+              "nativeQueryRef": "Promo Exposure %",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customers"
+                    }
+                  },
+                  "Property": "Average Previous Purchases"
+                }
+              },
+              "queryRef": "Customers.Average Previous Purchases",
+              "nativeQueryRef": "Average Previous Purchases"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bottom'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Current Promo Exposure vs Repeat-Purchase History'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1c01f26c32ad484b8151",
+        "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Display Segment" } },
+        "type": "Categorical"
+      },
+      {
+        "name": "2d12a37d43be595c9262",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Promo Exposure %" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "3e23b48e54cf6a6da373",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Average Previous Purchases" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "4f34c59f65d07b7eb484",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Customers Count" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "5045d6a076e18c8fc595",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Average Current Spend" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "6156e7b187f29d90d6a6",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Average Frequency Score" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "7267f8c29803aea1e7b7",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Average Satisfaction" } },
+        "type": "Advanced"
+      },
+      {
+        "name": "837809d3a914bfb2f8c8",
+        "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Customers" } }, "Property": "Customer Share %" } },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

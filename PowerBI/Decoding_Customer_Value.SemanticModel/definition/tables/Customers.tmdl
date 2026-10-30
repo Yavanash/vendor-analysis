@@ -1,0 +1,254 @@
+table Customers
+	lineageTag: cc630c69-b82c-4799-a479-c31e521d9474
+
+	measure 'Customers Count' =
+			
+			DISTINCTCOUNT(Customers[Customer ID])
+		formatString: 0
+		lineageTag: 15ad0aaa-4c4e-4d60-a91b-d225370bf2f4
+
+	measure 'Current Observed Spend' =
+			
+			SUM(Customers[current_spend])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 582a5ea9-1759-4fb8-ad5b-1ea4d5e3e059
+
+	measure 'Average Current Spend' =
+			
+			AVERAGE(Customers[current_spend])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: cd344268-f346-4aa8-b02d-c6940062fada
+
+	measure 'Promo Exposure %' =
+			
+			DIVIDE(
+			    SUM(Customers[observed_promo_exposure_flag]),
+			    [Customers Count]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3f494909-537b-4704-b655-44400b10893e
+
+	measure 'Average Previous Purchases' =
+			
+			AVERAGE(Customers[previous_purchase_history])
+		formatString: 0.0
+		lineageTag: f1b428f9-edbb-4f2d-8fd8-4adb31409cfb
+
+	measure 'Average Frequency Score' =
+			
+			AVERAGE(Customers[purchase_frequency_score])
+		formatString: 0.00
+		lineageTag: ff324fcc-2595-4fb8-9df0-ec5b570f8619
+
+	measure 'Average Satisfaction' =
+			
+			AVERAGE(Customers[satisfaction_score])
+		formatString: 0.00
+		lineageTag: 0b644c3b-6117-42f5-b39b-e9142edd6223
+
+	measure 'Customer Share %' =
+			
+			DIVIDE(
+			    [Customers Count],
+			    CALCULATE(
+			        [Customers Count],
+			        ALL(Customers[Display Segment])
+			    )
+			)
+		formatString: 0.0%
+		lineageTag: 4fe904ce-c7ad-4653-a82d-b3cd24168484
+
+	column 'Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d63bb29-5209-41ea-9e74-283ef280e9f6
+		summarizeBy: count
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 15f8acd0-7ea1-4291-8e37-4c7e957f733c
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column loyalty_tier_a
+		dataType: string
+		lineageTag: 33acc26b-657f-4acd-888b-53b626362ac7
+		summarizeBy: none
+		sourceColumn: loyalty_tier_a
+
+		annotation SummarizationSetBy = Automatic
+
+	column loyalty_score_a
+		dataType: double
+		lineageTag: 321fa109-2bd0-48da-8846-37d6b394fed9
+		summarizeBy: sum
+		sourceColumn: loyalty_score_a
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_spend
+		dataType: int64
+		formatString: 0
+		lineageTag: 19887f65-9943-4034-b618-eace1a25b080
+		summarizeBy: sum
+		sourceColumn: current_spend
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_purchase_history
+		dataType: int64
+		formatString: 0
+		lineageTag: 6dfde26d-0e4e-469f-b00a-8246151891fc
+		summarizeBy: sum
+		sourceColumn: previous_purchase_history
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_frequency_score
+		dataType: double
+		lineageTag: 1279857d-07f2-41e9-9c7f-237bbea2e966
+		summarizeBy: sum
+		sourceColumn: purchase_frequency_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column observed_promo_exposure_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: 5527de85-cfcf-4f4f-836e-dba3bc930175
+		summarizeBy: sum
+		sourceColumn: observed_promo_exposure_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column satisfaction_score
+		dataType: double
+		lineageTag: aa8e3318-0768-4367-8665-4c2f818bb70c
+		summarizeBy: sum
+		sourceColumn: satisfaction_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high_satisfaction_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: ff12e1c9-375a-4c8e-a361-1bc0f0d7ef07
+		summarizeBy: sum
+		sourceColumn: high_satisfaction_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column subscription_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: f30031eb-d159-40d1-ac5f-45b424973de5
+		summarizeBy: sum
+		sourceColumn: subscription_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_band
+		dataType: string
+		lineageTag: 3f846c2b-7c08-45d5-a0d2-9ca01f2d2215
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 3a1f56f9-5c5a-4f32-9512-511d124fb26a
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column location
+		dataType: string
+		lineageTag: 86a4de7c-1fd2-4270-8be6-882cc2149496
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 82cd0ed4-672f-4635-9579-2806ef0cdb55
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Segment' =
+			
+			SWITCH(
+			    Customers[segment],
+			    "Core Loyalists", "High Behavioral Loyalty",
+			    "Emerging Loyalists", "Upper-Mid Behavioral Loyalty",
+			    "Developing Loyalists", "Lower Behavioral Loyalty - No Current Promo",
+			    "Early-Stage Customers", "Lowest Behavioral Loyalty - No Current Promo",
+			    "Promo-Engaged Repeaters", "Higher-History Current Promo Users",
+			    "Promo-Exposed Transactors", "Lower-History Current Promo Users",
+			    Customers[segment]
+			)
+		lineageTag: a76a7603-c986-4d4e-b3c4-6c26f7f9624c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase History Band' =
+			
+			SWITCH(
+			    TRUE(),
+			    Customers[previous_purchase_history] <= 13, "Low History",
+			    Customers[previous_purchase_history] <= 37, "Mid History",
+			    "High History"
+			)
+		lineageTag: 437727be-63d6-4c19-8c00-be22e0afcc43
+		summarizeBy: none
+		sortByColumn: 'History Band Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'History Band Order' =
+			
+			SWITCH(
+			    TRUE(),
+			    Customers[previous_purchase_history] <= 13, 1,
+			    Customers[previous_purchase_history] <= 37, 2,
+			    3
+			)
+		formatString: 0
+		lineageTag: c216398a-2853-4114-abda-4bda26f7c53b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("Outputs\analytical\customer_segments.csv"),[Delimiter=",", Columns=15, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer ID", Int64.Type}, {"segment", type text}, {"loyalty_tier_a", type text}, {"loyalty_score_a", type number}, {"current_spend", Int64.Type}, {"previous_purchase_history", Int64.Type}, {"purchase_frequency_score", type number}, {"observed_promo_exposure_flag", Int64.Type}, {"satisfaction_score", type number}, {"high_satisfaction_flag", Int64.Type}, {"subscription_flag", Int64.Type}, {"age_band", type text}, {"gender", type text}, {"location", type text}, {"category", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
